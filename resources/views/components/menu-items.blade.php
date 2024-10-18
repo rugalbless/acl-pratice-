@@ -1,87 +1,131 @@
-<nav class="flex flex-1 flex-col">
+<nav class="flex flex-1 flex-col mt-8">
     <ul role="list" class="flex flex-1 flex-col gap-y-7">
         <li>
             <ul role="list" class="-mx-2 space-y-1">
                 <li>
-                    <!-- Current: "bg-indigo-700 text-white", Default: "text-indigo-200 hover:text-white hover:bg-indigo-700" -->
                     <a href="{{ route('dashboard') }}"
-
                        @class([
-                            'group flex gap-x-3 rounded-md bg-indigo-700 p-2 text-sm font-semibold leading-6 text-white' => request()->routeIs('dashboard'),
-                            'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200 hover:bg-indigo-700 hover:text-white' => !request()->routeIs('dashboard'),
-                        ])
-
-                        >
-                        <svg class="h-6 w-6 shrink-0 text-white" fill="none" viewBox="0 0 24 24"
-                             stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+                          'group flex gap-x-3 rounded-l-lg bg-white p-2 text-sm font-semibold leading-6 text-black transition-transform duration-200' => request()->routeIs('dashboard'),
+                          'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200  hover:text-gray-200 transition-transform duration-200' => !request()->routeIs('dashboard'),
+                      ])
+                       style="{{ request()->routeIs('dashboard') ? 'transform: translateX(16px);' : 'transform: translateX(0);' }}"
+                    >
+                        @if (!request()->routeIs('dashboard'))
+                            <span class="absolute left-0 bottom-0 h-[3px] rounded-md w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+                        @endif
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 24 24"
+                             class="size-6 transition-transform duration-200"
+                             fill="currentColor"
+                            @class([
+                                'text-black' => request()->routeIs('dashboard'),
+                                'text-indigo-200 group-hover:text-white' => !request()->routeIs('dashboard'),
+                            ])>
+                            <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+                            <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
                         </svg>
+
                         Home
                     </a>
                 </li>
+
+
+
                 <li>
                     <a href="{{ route('role.index') }}"
-                        @class([
-                             'group flex gap-x-3 rounded-md bg-indigo-700 p-2 text-sm font-semibold leading-6 text-white' => request()->routeIs('role.*'),
-                             'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200 hover:bg-indigo-700 hover:text-white' => !request()->routeIs('role.*'),
-                         ])>
-                        <svg class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
-                             fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+                       @class([
+                            'group flex gap-x-3 rounded-l-lg bg-white p-2 text-sm font-semibold leading-6 text-black transition-transform duration-200' => request()->routeIs('role.*'),
+                            'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200  hover:text-white transition-transform duration-200' => !request()->routeIs('role.*'),
+                        ])
+                       style="{{ request()->routeIs('role.*') ? 'transform: translateX(16px);' : 'transform: translateX(0);' }}"
+                    >
+                        @if (!request()->routeIs('role.*'))
+                            <span class="absolute left-0 bottom-0 h-[3px] rounded-md w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+                        @endif
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-6 transition-transform duration-200" fill="currentColor"
+                            @class([
+                                'text-blue-500' => request()->routeIs('role.*'),
+                                'text-indigo-200 group-hover:text-white' => !request()->routeIs('role.*'),
+                            ])>
+                            <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 1 1 7.5 0 3.75 3.75 0 0 1-7.5 0ZM15.75 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM2.25 9.75a3 3 0 1 1 6 0 3 3 0 0 1-6 0ZM6.31 15.117A6.745 6.745 0 0 1 12 12a6.745 6.745 0 0 1 6.709 7.498.75.75 0 0 1-.372.568A12.696 12.696 0 0 1 12 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 0 1-.372-.568 6.787 6.787 0 0 1 1.019-4.38Z" clip-rule="evenodd" />
+                            <path d="M5.082 14.254a8.287 8.287 0 0 0-1.308 5.135 9.687 9.687 0 0 1-1.764-.44l-.115-.04a.563.563 0 0 1-.373-.487l-.01-.121a3.75 3.75 0 0 1 3.57-4.047ZM20.226 19.389a8.287 8.287 0 0 0-1.308-5.135 3.75 3.75 0 0 1 3.57 4.047l-.01.121a.563.563 0 0 1-.373.486l-.115.04c-.567.2-1.156.349-1.764.441Z" />
                         </svg>
+
                         Roles
                     </a>
                 </li>
+
                 <li>
                     <a href="{{ route('permission.index') }}"
-                        @class([
-                              'group flex gap-x-3 rounded-md bg-indigo-700 p-2 text-sm font-semibold leading-6 text-white' => request()->routeIs('permission.*'),
-                              'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200 hover:bg-indigo-700 hover:text-white' => !request()->routeIs('permission.*'),
-                          ])>
-                        <svg class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
-                             fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"/>
+                       @class([
+                            'group flex gap-x-3 rounded-l-lg bg-white p-2 text-sm font-semibold leading-6 text-black transition-transform duration-200' => request()->routeIs('permission.*'),
+                            'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200  hover:text-white transition-transform duration-200' => !request()->routeIs('permission.*'),
+                        ])
+                       style="{{ request()->routeIs('permission.*') ? 'transform: translateX(16px);' : 'transform: translateX(0);' }}"
+                    >
+                        @if (!request()->routeIs('permission.*'))
+                            <span class="absolute left-0 bottom-0 h-[3px] rounded-md w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+                        @endif
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-6 transition-transform duration-200" fill="currentColor"
+                            @class([
+                                'text-blue-500' => request()->routeIs('permission.*'),
+                                'text-indigo-200 group-hover:text-white' => !request()->routeIs('permission.*'),
+                            ])>
+                            <path fill-rule="evenodd" d="M2.25 4.125c0-1.036.84-1.875 1.875-1.875h5.25c1.036 0 1.875.84 1.875 1.875V17.25a4.5 4.5 0 1 1-9 0V4.125Zm4.5 14.25a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z" clip-rule="evenodd" />
+                            <path d="M10.719 21.75h9.156c1.036 0 1.875-.84 1.875-1.875v-5.25c0-1.036-.84-1.875-1.875-1.875h-.14l-8.742 8.743c-.09.089-.18.175-.274.257ZM12.738 17.625l6.474-6.474a1.875 1.875 0 0 0 0-2.651L15.5 4.787a1.875 1.875 0 0 0-2.651 0l-.1.099V17.25c0 .126-.003.251-.01.375Z" />
                         </svg>
-                        Permissions
+                        Permission
                     </a>
                 </li>
+
                 <li>
                     <a href="{{ route('module.index') }}"
-                        @class([
-                              'group flex gap-x-3 rounded-md bg-indigo-700 p-2 text-sm font-semibold leading-6 text-white' => request()->routeIs('module.*'),
-                              'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200 hover:bg-indigo-700 hover:text-white' => !request()->routeIs('module.*'),
-                          ])>
-                        <svg class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
-                             fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/>
-                        </svg>
+                       @class([
+                            'group flex gap-x-3 rounded-l-lg bg-white p-2 text-sm font-semibold leading-6 text-black transition-transform duration-200' => request()->routeIs('module.*'),
+                            'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200  hover:text-white transition-transform duration-200' => !request()->routeIs('module.*'),
+                        ])
+                       style="{{ request()->routeIs('module.*') ? 'transform: translateX(16px);' : 'transform: translateX(0);' }}"
+                    >
+                        @if (!request()->routeIs('module.*'))
+                            <span class="absolute left-0 bottom-0 h-[3px] rounded-md w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+                        @endif
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-6 transition-transform duration-200" fill="currentColor"
+                            @class([
+                                'text-blue-500' => request()->routeIs('module.*'),
+                                'text-indigo-200 group-hover:text-white' => !request()->routeIs('module.*'),
+                            ])>
+                            <path fill-rule="evenodd" d="M3 6a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V6Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3v2.25a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3V6ZM3 15.75a3 3 0 0 1 3-3h2.25a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2.25Zm9.75 0a3 3 0 0 1 3-3H18a3 3 0 0 1 3 3V18a3 3 0 0 1-3 3h-2.25a3 3 0 0 1-3-3v-2.25Z" clip-rule="evenodd" />                        </svg>
+
                         Modules
                     </a>
                 </li>
+
                 <li>
                     <a href="{{ route('content.index') }}"
-                        @class([
-                              'group flex gap-x-3 rounded-md bg-indigo-700 p-2 text-sm font-semibold leading-6 text-white' => request()->routeIs('content.*'),
-                              'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200 hover:bg-indigo-700 hover:text-white' => !request()->routeIs('content.*'),
-                          ])>
-                        <svg class="h-6 w-6 shrink-0 text-indigo-200 group-hover:text-white"
-                             fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75"/>
-                        </svg>
+                       @class([
+                           'group flex gap-x-3 rounded-l-lg bg-white p-2 text-sm font-semibold leading-6 text-black transition-transform duration-200' => request()->routeIs('content.*'),
+                           'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-indigo-200  hover:text-white transition-transform duration-200' => !request()->routeIs('content.*'),
+                       ])
+                       style="{{ request()->routeIs('content.*') ? 'transform: translateX(16px);' : 'transform: translateX(0);' }}"
+                    >
+                        @if (!request()->routeIs('content.*'))
+                            <span class="absolute left-0 bottom-0 h-[3px] rounded-md w-0 bg-white transition-all duration-300 group-hover:w-full"></span>
+                        @endif
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-6 transition-transform duration-200" fill="currentColor"
+                            @class([
+                                'text-blue-500' => request()->routeIs('content.*'),
+                                'text-black group-hover:text-white' => !request()->routeIs('content.*'),
+                            ])>
+                            <path d="M11.644 1.59a.75.75 0 0 1 .712 0l9.75 5.25a.75.75 0 0 1 0 1.32l-9.75 5.25a.75.75 0 0 1-.712 0l-9.75-5.25a.75.75 0 0 1 0-1.32l9.75-5.25Z" />
+                            <path d="m3.265 10.602 7.668 4.129a2.25 2.25 0 0 0 2.134 0l7.668-4.13 1.37.739a.75.75 0 0 1 0 1.32l-9.75 5.25a.75.75 0 0 1-.71 0l-9.75-5.25a.75.75 0 0 1 0-1.32l1.37-.738Z" />
+                            <path d="m10.933 19.231-7.668-4.13-1.37.739a.75.75 0 0 0 0 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 0 0 0-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 0 1-2.134-.001Z" />                        </svg>
+
                         Contents
                     </a>
                 </li>
             </ul>
         </li>
+
 
     </ul>
 </nav>

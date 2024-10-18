@@ -4,26 +4,52 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
+    <div class="-mt-8">
+        <a href="{{ route('dashboard') }}" class="flex items-center space-x-2">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="35"  height="35"  viewBox="0 0 24 24"  fill="none"
+                  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-back-up">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 14l-4 -4l4 -4" />
+                <path d="M5 10h11a4 4 0 1 1 0 8h-1" />
+            </svg>
+            <h2 class="text-xl font-semibold leading-7 text-gray-900">Dashboard
+                <span class="absolute left-0 bottom-0 h-[2px] w-0 bg-red-800 transition-all duration-300 group-hover:w-full"></span>
+            </h2>
+        </a>
+    </div>
 
     <div class="mt-8 flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 sm:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 sm:px-8">
-                <div class="space-y-10 divide-y divide-gray-900/10">
-                    <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
-                        <div class="px-4 sm:px-0">
-                            <h2 class="text-base font-semibold leading-7 text-gray-900">Module {{ $content->name }}</h2>
-                            <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
-                        </div>
 
-                        <div  class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-4">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/hH7XP3Kelpg?si=-pIx31UFfmeF_plu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                        </div>
+                <div class="space-y-10 divide-y divide-gray-900/10">
+                    <div class="px-4 mt-12 sm:px-0">
+                        <h2 class="text-base font-semibold leading-7 text-gray-400">Module</h2>
+                        <p class="text-4xl font-bold text-gray-900">{{ $content->name }}</p>
+                    </div>
+
+                    <div class="bg-white ring-1 ring-gray-600/5 sm:rounded-xl mt-4  p-4">
+                        <iframe width="100%" height="315" src="https://www.youtube.com/embed/0g7HqfsCX4Y?si=CWqVyLk5fq9WJlua"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                class="rounded">
+                        </iframe>
                     </div>
                 </div>
 
+
                 <div  class="bg-white flex flex-col shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-4 mt-4">
-                    <h2 class="px-4 font-bold text-xl pb-4">Comments</h2>
-                    @foreach($content->comments as $comment)
+                    <h2 class="px-4 font-bold text-xl pb-4 flex gap-2 ">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 0 1-.923 1.785A5.969 5.969 0 0 0 6 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337Z" />
+                        </svg>
+                        Comments
+                    </h2>
+
+                @foreach($content->comments as $comment)
                         <div class="flex flex-row justify-between items-center mb-4">
                             <div class="flex flex-col">
                                 <div class="font-bold px-4 p1-4">

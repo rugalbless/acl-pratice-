@@ -9,22 +9,23 @@
     <div class="mt-8 flow-root">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <h2 class="text-2xl font-bold tracking-tight text-gray-900">Modules</h2>
+                <h2 class="text-4xl ml-12  font-bold tracking-tight text-gray-900">Modules</h2>
 
-                <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                <div class="ml-12 mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
 
                     @foreach($modules as $key => $module)
-                        <div class="group relative">
+                        <div class="group relative mt-8">
                             <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                <img src="https://picsum.photos/200/300?random={{$key}}" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                                <img src="https://picsum.photos/200/300?random={{$key}}" class="h-full w-full object-cover object-center lg:h-full lg:w-full" alt="module image">
                             </div>
                             <div class="mt-4 flex justify-between">
                                 <div>
-                                    <h3 class="text-sm text-gray-700">
+                                    <h3 class="text-lg font-semibold text-gray-700">
                                         <a href="{{ route('module.show', $module->id) }}">
                                             <span aria-hidden="true" class="absolute inset-0"></span>
                                             {{ $module->name }}
                                         </a>
+
                                     </h3>
                                 </div>
                             </div>
