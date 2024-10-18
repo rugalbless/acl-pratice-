@@ -12,7 +12,7 @@
                     <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                         <div class="px-4 sm:px-0">
                             <h2 class="text-base font-semibold leading-7 text-gray-900">Module {{ $module->name }}</h2>
-                            <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+                            <p class="mt-1 text-sm leading-6 text-gray-600">{{ $module->description }}</p>
                         </div>
 
                         <div  class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-4">
@@ -32,8 +32,8 @@
                                         </div>
                                         <div class="flex shrink-0 items-center gap-x-4">
                                             <div class="flex flex-col sm:items-end">
-                                                <a href="#" class="text-sm leading-6 text-gray-900">Editar</a>
-                                                <a href="#2" class="mt-1 text-xs leading-5 text-gray-500">Remover</a>
+                                                <a href="#" class="text-base leading-6 text-yellow-500 hover:text-yellow-600">Edit</a>
+                                                <a href="#2" class="mt-1 text-xs leading-5  text-red-600 hover:text-red-700">Remove</a>
                                             </div>
                                             <a href="{{ route('content.show', $content->id) }}">
                                                 <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
