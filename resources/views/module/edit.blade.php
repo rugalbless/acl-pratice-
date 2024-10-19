@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -12,7 +13,7 @@
                     <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                         <div class="px-4 sm:px-0">
                             <h2 class="text-base font-semibold leading-7 text-gray-900">Module {{ $module->name }}</h2>
-                            <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+                            <p class="mt-1 text-sm leading-6 text-gray-600">Everything changed here will be available as soon as it's saved. Make sure to share only what is necessary.</p>
                         </div>
 
                         <form action="{{ route('module.update', $module->id) }}" method="POST" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
@@ -21,7 +22,7 @@
                             <div class="px-4 py-6 sm:p-8">
                                 <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                                     <div class="sm:col-span-3">
-                                        <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Module</label>
+                                        <label for="name" class="block text-sm font-bold leading-6 text-gray-900">Module name</label>
                                         <div class="mt-2">
                                             <input
                                                 type="text"
@@ -30,6 +31,15 @@
                                                 value="{{ $module->name }}"
                                                 class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                             >
+                                                {{--     modeule description--}}
+                                            <label for="name" class="mt-2 block text-sm font-bold leading-6 text-gray-900">Module description</label>
+
+                                            <textarea
+                                                name="description"
+                                                id="description"
+                                                class="mt-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                rows="10"
+                                            >{{ old('description', $module->description) }}</textarea>
                                         </div>
                                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                     </div>
@@ -73,5 +83,18 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            tinymce.init({
+                selector: 'textarea#description',
+                plugins: 'code table lists',
+                toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | code | table',
+                menubar: false,
+                height: 300,
+                statusbar: false,
+                branding: false
 
+            });
+        });
+    </script>
 </x-app-layout>

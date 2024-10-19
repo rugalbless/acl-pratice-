@@ -21,6 +21,10 @@ class ModuleUpdateRequest extends FormRequest
      */
     public function rules(): array
     {
-        return ['name' => 'required|min:3', 'show_home' => 'nullable|boolean'];
+        return [
+            'name' => 'required|min:3',
+            'show_home' => 'nullable|boolean',
+            'description'=>'nullable|min:3',
+            ];
     }
 }

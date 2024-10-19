@@ -12,11 +12,12 @@ class Module extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'name',
+        'description',
         'show_home'
     ];
-
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
