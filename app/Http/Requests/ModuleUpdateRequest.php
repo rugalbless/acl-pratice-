@@ -24,7 +24,8 @@ class ModuleUpdateRequest extends FormRequest
         return [
             'name' => 'required|min:3',
             'show_home' => 'nullable|boolean',
-            'description'=>'nullable|min:3',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description'=>'nullable|min:3'
             ];
     }
 }

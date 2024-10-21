@@ -16,6 +16,7 @@ class Module extends Model
     protected $fillable = [
         'name',
         'description',
+        'image',
         'show_home'
     ];
     public function users(): BelongsToMany

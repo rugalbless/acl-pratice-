@@ -39,7 +39,38 @@
                                                 id="description"
                                                 class="mt-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                 rows="10"
-                                            >{{ old('description', $module->description) }}</textarea>
+                                            >{{ old('description', $module->description) }}
+                                            </textarea>
+
+                                            <label for="module" class="mt-2 block text-sm font-bold leading-6 text-gray-900">Module Image</label>
+                                            <div class="mt-1 aspect-w-1 aspect-h-1 w-48 overflow-hidden rounded-md">
+                                                @if($module->image)
+                                                    <img id="image-preview"
+                                                         src="{{ Storage::url($module->image) }}"
+                                                         class="object-cover object-center"
+                                                         alt="Module Image"
+                                                         style="width: 192px; height: 288px;">  <!-- Tamanho fixo -->
+                                                @else
+                                                    <img id="image-preview"
+                                                         src="https://picsum.photos/200/300?random={{ $module->id }}"
+                                                         class="object-cover object-center"
+                                                         alt="Random Image"
+                                                         style="width: 192px; height: 288px;">  <!-- Tamanho fixo -->
+                                                @endif
+
+                                                <p id="random-image-message" class="mt-2 text-sm text-orange-600 {{ $module->image ? 'hidden' : '' }}">
+                                                    This is a random image. No image has been uploaded for this module yet.
+                                                </p>
+                                            </div>
+
+                                            <div class="mt-2">
+                                                <input type="file"
+                                                       name="image"
+                                                       id="image"
+                                                       class="block w-full text-sm text-gray-50 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:cursor-pointer file:text-sm file:font-semibold file:text-slate-500 hover:file:text-yellow-50 hover:file:bg-slate-700"
+                                                       onchange="previewImage(event)">
+                                            </div>
+
                                         </div>
                                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                     </div>
@@ -61,7 +92,7 @@
                                             </div>
 
                                             <div class="text-sm leading-6">
-                                                <label for="show_home" class="font-medium text-gray-900">Show on Home</label>
+                                                <label for="show_home" class="font-bold text-gray-900">Show on Home</label>
                                                 <p class="text-gray-500">If marked wil appear on Home</p>
                                             </div>
                                         </div>
@@ -96,5 +127,34 @@
 
             });
         });
+
+        function previewImage(event) {
+            const fileInput = event.target;
+            const previewImage = document.getElementById('image-preview');
+            const randomImageMessage = document.getElementById('random-image-message');
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.width = '192px';
+                    previewImage.style.height = '288px';
+                    randomImageMessage.classList.add('hidden');
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                @if($module->image)
+                    previewImage.src = "{{ Storage::url($module->image) }}";
+                previewImage.style.width = '192px';
+                previewImage.style.height = '288px';
+                randomImageMessage.classList.add('hidden');
+                @else
+                    previewImage.src = "https://picsum.photos/200/300?random={{ $module->id }}";
+                previewImage.style.width = '192px';
+                previewImage.style.height = '288px';
+                randomImageMessage.classList.remove('hidden');
+                @endif
+            }
+        }
     </script>
 </x-app-layout>

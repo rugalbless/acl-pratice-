@@ -63,6 +63,8 @@ class ModuleController extends Controller
 
         $data['show_home'] = $data['show_home'] ?? false;
         $module->update($data);
+
+
         return redirect(route('module.index'));
     }
 

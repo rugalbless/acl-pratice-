@@ -16,7 +16,16 @@
                     @foreach($modules as $key => $module)
                         <div class="group relative mt-8">
                             <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                <img src="https://picsum.photos/200/300?random={{$key}}" class="h-full w-full object-cover object-center lg:h-full lg:w-full" alt="module image">
+                               @if($module->image)
+
+                                    <img src="{{ Storage::url($module->image) }}" class="h-full w-full object-cover object-center lg:h-full lg:w-full" alt="{{ $module->name }}" >
+
+
+                                @else
+
+                                <img src="https://picsum.photos/200/300?random={{$key}}" class="h-full w-full object-cover object-center lg:h-full lg:w-full" alt="Random Image">
+
+                                @endif
                             </div>
                             <div class="mt-4 flex justify-between">
                                 <div>
