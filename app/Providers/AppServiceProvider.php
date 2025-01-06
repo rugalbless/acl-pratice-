@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\RoleEnum;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 

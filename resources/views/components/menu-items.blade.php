@@ -29,8 +29,7 @@
                     </a>
                 </li>
 
-
-                @can('access-role')
+                @can('vieAny', \App\Models\Role::class)
                 <li>
                     <a href="{{ route('role.index') }}"
                        @class([
@@ -77,7 +76,7 @@
                         Permission
                     </a>
                 </li>
-
+                @can("view-any-module")
                 <li>
                     <a href="{{ route('module.index') }}"
                        @class([
@@ -99,7 +98,7 @@
                         Modules
                     </a>
                 </li>
-
+                @endcan
                 <li>
                     <a href="{{ route('content.index') }}"
                        @class([
