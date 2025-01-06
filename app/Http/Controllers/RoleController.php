@@ -15,6 +15,7 @@ class RoleController extends Controller
      */
     public function index()
     {
+        Gate::authorize('access-roles');
         return view('role.index')
             ->with('roles', Role::paginate());
     }
@@ -50,6 +51,7 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        Gate::authorize('edit-role-roles');
         return view('role.edit')
             ->with('role', $role);
     }

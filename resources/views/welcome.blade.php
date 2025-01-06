@@ -87,15 +87,12 @@
                                 <div class="relative flex items-center gap-6 lg:items-end">
                                     <div id="docs-card-content" class="flex items-start gap-6 lg:flex-col">
 
-                                        <div class="pt-3 sm:pt-5 lg:pt-0">
-                                            <h2 class="text-xl font-semibold text-black dark:text-white">ACL (ACCESS CONTROL LIST)</h2>
+                                        <div class=" pt-3 sm:pt-5 lg:pt-0">
 
-                                            <p class=" text-sm/relaxed">
-                                                Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
-                                            </p>
+                                            <h2 class=" text-xl">
+                                                An Access Control List (ACL) is a mechanism used to manage access permissions to resources in computer systems. It specifies which users or systems are permitted to access specific objects and what operations they can perform. Each ACL contains multiple entries that define subjects (users or groups) and their permissions, such as reading, writing, and executing. When a subject tries to access an object, the system checks the corresponding ACL to grant or deny access based on the defined permissions.                                            </h2>
                                         </div>
                                     </div>
-
                                 </div>
                             </a>
                         </div>

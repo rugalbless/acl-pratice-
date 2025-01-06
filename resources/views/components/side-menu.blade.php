@@ -55,9 +55,11 @@
     <!-- Static sidebar for desktop -->
     <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         <!-- Sidebar component, swap this element with another sidebar if you like -->
-        <div class="flex grow flex-col gap-y-5 bg-slate-800 px-6 pb-4">
+        <div class="flex grow flex-col gap-y-5 bg-slate-800 px-6 pb-4" >
             <div class="flex h-16 mt-8 shrink-0 justify-center items-center">
-                <img id="logo" class="scale-150" src="{{ Vite::asset("resources/assets/logo.svg") }}"  alt="logo"/>
+                <a  href="{{ route('dashboard') }}">
+                    <img id="logo" class="scale-150" src="{{ Vite::asset("resources/assets/logo.svg") }}"  alt="logo"/>
+                </a>
             </div>
             <x-menu-items />
         </div>

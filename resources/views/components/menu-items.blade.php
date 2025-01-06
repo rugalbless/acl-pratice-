@@ -30,7 +30,7 @@
                 </li>
 
 
-
+                @can('access-role')
                 <li>
                     <a href="{{ route('role.index') }}"
                        @class([
@@ -54,7 +54,7 @@
                         Roles
                     </a>
                 </li>
-
+                @endcan
                 <li>
                     <a href="{{ route('permission.index') }}"
                        @class([
